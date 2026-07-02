@@ -2,6 +2,25 @@
 
 本项目版本号见根目录 `VERSION` 文件，Docker 镜像 tag 与之对应（`p0luz/ombre-brain:<VERSION>`）。
 
+## 2.4.12
+
+### 优化 / Improved
+
+- `pulse()` 顶部统计现在单独显示 feel / plan / letter 数量，避免列表数量和头部统计看起来对不上。
+- `grow()` 短内容走 hold 风格单条保存时会明确提示“没有拆分”，减少短日记归档时的误解。
+- Dashboard 保存 `OMBRE_HOST_VAULT_DIR` 后直接提示需要重启容器/服务；API 也返回 `restart_required` 和 `message`。
+- Dashboard 将单桶、信件和导入审核删除文案改为“删除到档案”，与清理模式里的物理永久删除明确区分。
+- `trace(resolved=1)` 与 REST resolve 共用同一套中文提示，Dashboard 会展示“已沉底/已重新激活”的一致说明。
+- `config.example.yaml` 移除已废弃的 active `wikilink:` 配置段，只保留 deprecated 说明。
+
+### 测试 / Tests
+
+- 新增 `tests/test_priority4_confusion_cleanup.py` 覆盖上述高频困惑点的回归。
+
+### 维护 / Chores
+
+- VERSION + `src/VERSION` -> 2.4.12。
+
 ## 2.4.11
 
 ### 修复 / Fixed
